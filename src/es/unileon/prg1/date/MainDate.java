@@ -33,7 +33,9 @@ public class MainDate{
 		boolean same = ayer.isSame(hoy);
 		if(same == true){
 		System.out.println("Las dos fechas son la misma");
-		}		
+		}	
+		
+		System.out.println(hoy.monthName());
 		
 		}catch(DateException e){
 		System.out.println(e.getMessage());

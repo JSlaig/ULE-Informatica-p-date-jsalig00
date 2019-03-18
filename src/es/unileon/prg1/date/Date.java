@@ -222,6 +222,52 @@ public class Date{
 		return same;
 	}
 	
+	//Metodo que devuelva el nombre del mes
+	public String monthName(){
+		String month;
+		switch(this.month){
+			case 1:
+				month = "Enero";
+			break;
+			case 2:
+				month = "Febrero";
+			break;
+			case 3:
+				month = "Marzo";
+			break;
+			case 4:
+				month = "Abril";
+			break;
+			case 5:
+				month = "Mayo";
+			break;
+			case 6:
+				month = "Junio";
+			break;
+			case 7:
+				month = "Julio";
+			break;
+			case 8:
+				month = "Agosto";
+			break;
+			case 9:
+				month = "Septiembre";
+			break;
+			case 10:
+				month = "Octubre";
+			break;
+			case 11:
+				month = "Noviembre";
+			break;
+			case 12:
+				month = "Diciembre";
+			break;
+			default:
+			month = "No se ha introducido ningun mes";
+		}
+		return month;
+	}
+	
 	//Metodo para transformar la fecha en una cadena de caracteres
 	public String toString() {
 		return this.day + "/" + this.month + "/" + this.year;
