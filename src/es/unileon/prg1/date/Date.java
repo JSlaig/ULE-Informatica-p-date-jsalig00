@@ -1,4 +1,4 @@
-package es.unileon.prg1.p-date;
+package es.unileon.prg1.date;
 
 public class Date{
 	
@@ -18,15 +18,40 @@ public class Date{
 		}
 	}
 	
+	//Implementar metodos set
+	public void setDay(int day){
+		if(this.isDayRight(day, this.month)){
+			this.day = day;
+		}
+	}
+	public void setMonth(int month){
+		if(this.isDayRight(this.day, month)){
+			this.month = month;
+		}
+	}
+	public void setYear(int year){
+		this.year = year;
+	}
 	
-	//Implementar metodo que se encarge de comprobar si el dia y el mes es correcto
+	//Implementar metodos get
+	public int getDay(){
+		return this.day;
+	}
+	public int getMonth(){
+		return this.month;
+	}
+	public int getYear(){
+		return this.year;
+	}
+	
+		//Metodo para comprobar si la fecha introducida es correcta
 	public boolean isDayRight(int day, int month){
 		
 		boolean isRight = false;
 		
 		switch(month){
 			case 1:
-				if(day > 0 && day < 31){
+				if(day > 0 && day < 32){
 					isRight = true;
 				}
 				else{
@@ -34,7 +59,10 @@ public class Date{
 				}
 			break;
 			case 2:
-				if(day > 0 && day < 31){
+				if(day > 0 && isBisiesto() == false && day < 29){
+					isRight = true;
+				}
+				else if(day > 0 && isBisiesto() == true && day < 30){
 					isRight = true;
 				}
 				else{
@@ -42,7 +70,7 @@ public class Date{
 				}
 			break;
 			case 3:
-				if(day > 0 && day < 31){
+				if(day > 0 && day < 32){
 					isRight = true;
 				}
 				else{
@@ -58,7 +86,7 @@ public class Date{
 				}
 			break;
 			case 5:
-				if(day > 0 && day < 31){
+				if(day > 0 && day < 32){
 					isRight = true;
 				}
 				else{
@@ -74,7 +102,7 @@ public class Date{
 				}
 			break;
 			case 7:
-				if(day > 0 && day < 31){
+				if(day > 0 && day < 32){
 					isRight = true;
 				}
 				else{
@@ -82,7 +110,7 @@ public class Date{
 				}
 			break;
 			case 8:
-				if(day > 0 && day < 31){
+				if(day > 0 && day < 32){
 					isRight = true;
 				}
 				else{
@@ -98,7 +126,7 @@ public class Date{
 				}
 			break;
 			case 10:
-				if(day > 0 && day < 31){
+				if(day > 0 && day < 32){
 					isRight = true;
 				}
 				else{
@@ -114,12 +142,13 @@ public class Date{
 				}
 			break;
 			case 12:
-				if(day > 0 && day < 31){
+				if(day > 0 && day < 32){
 					isRight = true;
 				}
 				else{
 					isRight = false;
 				}
+			break;
 			default:
 				isRight = false;
 		}
@@ -129,13 +158,49 @@ public class Date{
 	//Metodo para comprobar si un año es bisiesto, reutilizado de apartado030102 ejercicio 02 de la practica de sentencias de control
 	public boolean isBisiesto(){
 		
-	}
-	//Implementar metodo para cambiar el dia
-	public void setDay(int day){
-		if(this.isDayRight(day, this.month)){
-			this.day = day;
+		int year;				
+		boolean bisiesto = false;
+		
+		year = this.year;
+		
+		if(year % 400 == 0){
+			bisiesto = true;
 		}
+		else if(year % 4 == 0 && year % 100 != 0){
+			bisiesto = true;
+		}
+		else{
+			bisiesto = false;
+		}
+		return bisiesto;
 	}
 	
+	//Sentencias de control con if
+	public boolean isSameYear(int year){
+		boolean sameYear = false;
+			
+		if(year == this.year){
+			sameYear = true;
+		}
+		else{
+			sameYear = false;
+		}
+		return sameYear;
+	}
 	
+	public boolean isSameMonth(int month){
+		boolean sameMonth = false;
+			
+		if(month == this.month){
+			sameMonth = true;
+		}
+		else{
+			sameMonth = false;
+		}
+		return sameMonth;
+	}
+	//Metodo para transformar la fecha en una cadena de caracteres
+	public String toString() {
+		return this.day + "/" + this.month + "/" + this.year;
+	}
 }

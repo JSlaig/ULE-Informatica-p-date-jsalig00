@@ -1,4 +1,4 @@
-package es.unileon.prg1.p-date;
+package es.unileon.prg1.date;
 
 public class MainDate{
 	
@@ -7,12 +7,12 @@ public class MainDate{
 		Date day;
 		
 		try{
-		day = new Date(40, 40, 2019);
+		day = new Date(01, 12, 2019);
 		System.out.println(day.toString());
 		}catch(DateException e){
 		System.out.println(e.getMessage());
 		}		
 		
-		day.setDay(40);
+		//day.setDay(40);
 	}
 }
