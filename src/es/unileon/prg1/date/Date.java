@@ -6,7 +6,7 @@ public class Date{
 	private int month;
 	private int year;
 	
-	//Implementar excepciones en el constructor cuando la fecha introducida no sea valida
+	//Constructor que lanza excepcion
 	public Date(int day, int month, int year)throws DateException{	
 		if(this.isDayRight(day, month) == true){
 			this.day = day;
@@ -199,6 +199,29 @@ public class Date{
 		}
 		return sameMonth;
 	}
+	
+	public boolean isSameDay(int day){
+		boolean sameDay = false;
+		if(day == this.day){
+			sameDay = true;
+		}
+		else{
+			sameDay = false;
+		}
+		return sameDay;
+	}
+	
+	public boolean isSame(Date aux){
+		boolean same = false;
+		if(this.isSameYear(aux.getYear()) == true && this.isSameMonth(aux.getMonth()) == true && this.isSameDay(aux.getDay()) == true){
+			same = true;
+		}
+		else{
+			same = false;
+		}
+		return same;
+	}
+	
 	//Metodo para transformar la fecha en una cadena de caracteres
 	public String toString() {
 		return this.day + "/" + this.month + "/" + this.year;

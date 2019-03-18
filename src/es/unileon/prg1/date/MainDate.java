@@ -4,15 +4,39 @@ public class MainDate{
 	
 	public static void main(String args[]){
 		
-		Date day;
+		Date hoy = null;
+		Date ayer = null;
 		
 		try{
-		day = new Date(01, 12, 2019);
-		System.out.println(day.toString());
+			
+		hoy = new Date(30, 12, 2019);
+		ayer = new Date(30, 12, 2019);
+		
+		System.out.println(hoy.toString());
+		System.out.println(ayer.toString());
+		
+		boolean sameYear = ayer.isSameYear(hoy.getYear());		
+		if(sameYear == true){
+		System.out.println("Las dos fechas tienen el mismo año");
+		}
+		
+		boolean sameMonth = ayer.isSameMonth(hoy.getMonth());		
+		if(sameMonth == true){
+		System.out.println("Las dos fechas tienen el mismo mes");
+		}
+		
+		boolean sameDay = ayer.isSameDay(hoy.getDay());		
+		if(sameDay == true){
+		System.out.println("Las dos fechas tienen el mismo dia");
+		}
+		
+		boolean same = ayer.isSame(hoy);
+		if(same == true){
+		System.out.println("Las dos fechas son la misma");
+		}		
+		
 		}catch(DateException e){
 		System.out.println(e.getMessage());
 		}		
-		
-		//day.setDay(40);
 	}
 }
