@@ -268,6 +268,26 @@ public class Date{
 		return month;
 	}
 	
+	//Metodo que devuelve el nombre de la estacion
+	public String isSeason()throws DateException{
+		String season = "";
+		
+		if(this.month > 3 && this.month < 5 || (this.month == 3 && this.day >= 1) || (this.month == 5 && this.day <= 31)){
+			season = "primavera";
+		}		
+		else if(this.month > 6 && this.month < 8 || (this.month == 6 && this.day >= 1) || (this.month == 8 && this.day <= 31)){
+			season = "verano";
+		}
+		else if(this.month > 9 && this.month < 11 || (this.month == 9 && this.day >= 1) || (this.month == 11 && this.day <= 30)){
+			season = "otoño";
+		}
+		else if(this.month >= 1 && this.month < 2 || (this.month == 12 && this.day >= 1) || (this.month == 2 && this.day <= 28)){}
+		else{
+			throw new DateException("La fecha introducida no corresponde con ninguna estacion");
+		}
+		return season;
+	}
+	
 	//Metodo para transformar la fecha en una cadena de caracteres
 	public String toString() {
 		return this.day + "/" + this.month + "/" + this.year;

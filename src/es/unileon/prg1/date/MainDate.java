@@ -9,7 +9,7 @@ public class MainDate{
 		
 		try{
 			
-		hoy = new Date(30, 12, 2019);
+		hoy = new Date(29, 2, 2019);
 		ayer = new Date(30, 12, 2019);
 		
 		System.out.println(hoy.toString());
@@ -36,6 +36,8 @@ public class MainDate{
 		}	
 		
 		System.out.println(hoy.monthName());
+		
+		System.out.println(hoy.isSeason());
 		
 		}catch(DateException e){
 		System.out.println(e.getMessage());
