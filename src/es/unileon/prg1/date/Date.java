@@ -316,12 +316,15 @@ public class Date{
 		
 	//Metodo que imprime el numero de dias restantes para que acabe el mes
 	public void printDaysLeft(){
-		int daysLeft = this.daysNumber() - this.day;
+		int daysLeft = this.daysNumber() + 1 - this.day;
 		if(daysLeft == 1){
 		System.out.println("Queda "+daysLeft+" dia para que acabe el mes: ");
 		}
 		else{
 		System.out.println("Quedan "+daysLeft+" dias para que acabe el mes: ");
+		}
+		for(int i = this.day; i <= this.daysNumber(); i++){
+			System.out.println(i+"/" + this.month + "/" + this.year);
 		}
 	}
 	
@@ -330,6 +333,7 @@ public class Date{
 		System.out.println("La fecha es: "+this.toString());
 	}
 	
+	//Metodo auxiliar para el metodo printDaysLeft
 	public int daysNumber(){
 		int days = 0;
 		switch(this.month){
@@ -360,6 +364,28 @@ public class Date{
 				days = 0;
 		}
 		return days;
+	}
+	
+	//Metodo para imprimir los nombres de los meses con el mismo numero de dias
+	public void printSameDayNumber(){
+		if(this.daysNumber() == 30){
+			printMonthName(4);
+			printMonthName(6);
+			printMonthName(9);
+			printMonthName(11);
+		}
+		else if(this.daysNumber() == 31){
+			printMonthName(1);
+			printMonthName(3);
+			printMonthName(5);
+			printMonthName(7);
+			printMonthName(8);
+			printMonthName(10);
+			printMonthName(12);
+		}
+		else{
+			printMonthName(2);
+		}
 	}
 	
 	//Metodo para transformar la fecha en una cadena de caracteres

@@ -9,7 +9,7 @@ public class MainDate{
 		
 		try{
 			
-		hoy = new Date(30, 12, 2019);
+		hoy = new Date(12, 12, 2019);
 		ayer = new Date(30, 12, 2019);
 		
 		/*		
@@ -40,6 +40,8 @@ public class MainDate{
 		hoy.printMonthsLeft();
 
 		hoy.printDaysLeft();
+		
+		hoy.printSameDayNumber();
 		
 		ayer.printDate();
 		
