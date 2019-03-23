@@ -37,8 +37,7 @@ public class MainDate{
 		}	
 		*/
 		
-		hoy.printMonthName();
-		
+				
 		hoy.printSeason();
 		
 		hoy.printMonthsLeft();	

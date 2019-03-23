@@ -50,7 +50,7 @@ public class Date{
 		return this.year;
 	}
 	
-		//Metodo para comprobar si la fecha introducida es correcta
+	//Metodo para comprobar si la fecha introducida es correcta
 	public boolean isDayRight(int day, int month){
 		
 		boolean isRight = false;
@@ -225,10 +225,10 @@ public class Date{
 		return same;
 	}
 	
-	//Metodo que devuelva el nombre del mes
-	public void printMonthName() throws DateException{
+	//Metodo que imprime el nombre del mes
+	public void printMonthName(int i){
 		String month;
-		switch(this.month){
+		switch(i){
 			case 1:
 				month = "Enero";
 			break;
@@ -266,13 +266,13 @@ public class Date{
 				month = "Diciembre";
 			break;
 			default:			
-			throw new DateException("La fecha introducida no pertenece a ninguno de los doce meses.");
+			month = "";
 		}
 		
-		System.out.println("El mes de la fecha introducida es: "+month);
+		System.out.println(month);
 	}
 	
-	//Metodo que devuelve el nombre de la estacion
+	//Metodo que imprime el nombre de la estacion
 	public void printSeason()throws DateException{
 		String season = "";
 		
@@ -285,7 +285,9 @@ public class Date{
 		else if(this.month > 9 && this.month < 11 || (this.month == 9 && this.day >= 1) || (this.month == 11 && this.day <= 30)){
 			season = "otoño";
 		}
-		else if(this.month >= 1 && this.month < 2 || (this.month == 12 && this.day >= 1) || (this.month == 2 && this.day <= 28)){}
+		else if(this.month >= 1 && this.month < 2 || (this.month == 12 && this.day >= 1) || (this.month == 2 && this.day <= 29)){
+			season = "invierno";
+		}
 		else{
 			throw new DateException("La fecha introducida no corresponde con ninguna estacion");
 		}
@@ -294,15 +296,24 @@ public class Date{
 	
 	//Metodo que calcula el numero de meses restante hasta el final del anyo
 	public void printMonthsLeft(){
-		int monthsLeft = 12 - this.month;
+		int monthsLeft = 13 - this.month;
 		if(monthsLeft == 1){
-			System.out.println("Quedan "+monthsLeft+" mes para que finalice el anyo");
+			System.out.println("Queda "+monthsLeft+" mes para que finalice el anyo: ");
 		}
 		else{
-			System.out.println("Quedan "+monthsLeft+" meses para que finalice el anyo");
-		}		
+			System.out.println("Quedan "+monthsLeft+" meses para que finalice el anyo: ");
+		}	
+			
+		for(int i = this.month; i <= 12; i++){
+			printMonthName(i);
+		}
 	}
 		
+	//Metodo que imprime el numero de dias restantes para que acabe el mes
+	public void printDaysLeft(){
+		
+	}
+	
 	//Metodo para imprimir por pantalla la fecha almacenada en un objeto
 	public void printDate(){
 		System.out.println("La fecha es: "+this.toString());
@@ -312,5 +323,5 @@ public class Date{
 	public String toString(){
 		return this.day + "/" + this.month + "/" + this.year;
 	}
-
+	
 }
