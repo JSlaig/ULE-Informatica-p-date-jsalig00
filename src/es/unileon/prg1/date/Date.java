@@ -368,6 +368,7 @@ public class Date{
 	
 	//Metodo para imprimir los nombres de los meses con el mismo numero de dias
 	public void printSameDayNumber(){
+		System.out.println("Los meses que tienen el mismo numero de dias que el introducido son: ");
 		if(this.daysNumber() == 30){
 			printMonthName(4);
 			printMonthName(6);
@@ -386,6 +387,38 @@ public class Date{
 		else{
 			printMonthName(2);
 		}
+	}
+	
+	//Metodo para contar el numero de dias del anyo que han pasado
+	public void dayOfYear(){
+		
+		try{
+			
+		Date start = new Date(1,1,this.getYear());
+		
+		int day = 1;
+		
+		for(int i = 1; i <= this.month; i++){
+			for(int j = 1; j <= start.daysNumber(); j++){
+				
+				start.setDay(j);
+				start.setMonth(i);
+				
+				if(this.isSame(start) == true){
+					break;					
+				}
+				
+				else{
+					day++;				
+				}
+			}
+		}
+		
+		System.out.println("Es el dia "+day+" del anyo");
+		
+		}catch(DateException e){
+		System.out.println(e.getMessage());
+		}		
 	}
 	
 	//Metodo para transformar la fecha en una cadena de caracteres
