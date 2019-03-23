@@ -19,14 +19,20 @@ public class Date{
 	}
 	
 	//Implementar metodos set
-	public void setDay(int day){
+	public void setDay(int day)throws DateException{
 		if(this.isDayRight(day, this.month)){
 			this.day = day;
 		}
+		else{
+			throw new DateException("Dia invalido("+day+")");
+		}
 	}
-	public void setMonth(int month){
+	public void setMonth(int month)throws DateException{
 		if(this.isDayRight(this.day, month)){
 			this.month = month;
+		}
+		else{
+			throw new DateException("Mes invalido("+month+")");
 		}
 	}
 	public void setYear(int year){
@@ -175,7 +181,7 @@ public class Date{
 		return bisiesto;
 	}
 	
-	//Sentencias de control con if
+	//Sentencias de control con if, ahora simplificadas con el api de java
 	public boolean isSameYear(int year){
 		boolean sameYear = false;
 			
@@ -187,7 +193,6 @@ public class Date{
 		}
 		return sameYear;
 	}
-	
 	public boolean isSameMonth(int month){
 		boolean sameMonth = false;
 			
@@ -199,7 +204,6 @@ public class Date{
 		}
 		return sameMonth;
 	}
-	
 	public boolean isSameDay(int day){
 		boolean sameDay = false;
 		if(day == this.day){
@@ -210,7 +214,6 @@ public class Date{
 		}
 		return sameDay;
 	}
-	
 	public boolean isSame(Date aux){
 		boolean same = false;
 		if(this.isSameYear(aux.getYear()) == true && this.isSameMonth(aux.getMonth()) == true && this.isSameDay(aux.getDay()) == true){
@@ -223,7 +226,7 @@ public class Date{
 	}
 	
 	//Metodo que devuelva el nombre del mes
-	public String monthName(){
+	public String getMonthName() throws DateException{
 		String month;
 		switch(this.month){
 			case 1:
@@ -263,7 +266,8 @@ public class Date{
 				month = "Diciembre";
 			break;
 			default:
-			month = "No se ha introducido ningun mes";
+			
+			throw new DateException("La fecha introducida no pertenece a ninguno de los doce meses.");
 		}
 		return month;
 	}
@@ -289,7 +293,7 @@ public class Date{
 	}
 	
 	//Metodo para transformar la fecha en una cadena de caracteres
-	public String toString() {
+	public String toString(){
 		return this.day + "/" + this.month + "/" + this.year;
 	}
 }
