@@ -12,6 +12,7 @@ public class MainDate{
 		hoy = new Date(30, 12, 2019);
 		ayer = new Date(30, 12, 2019);
 		
+		/*
 		System.out.println(hoy.toString());
 		System.out.println(ayer.toString());
 		
@@ -34,15 +35,17 @@ public class MainDate{
 		if(same == true){
 		System.out.println("Las dos fechas son la misma");
 		}	
+		*/
 		
-		System.out.println(hoy.getMonthName());
+		hoy.printMonthName();
 		
-		System.out.println(hoy.isSeason());
+		hoy.printSeason();
 		
-		String end = hoy.getMonthsLeft();
-		System.out.println(end);
+		hoy.printMonthsLeft();	
 		
 		hoy.printDate();
+		
+		ayer.printDate();
 		
 		}catch(DateException e){
 		System.out.println(e.getMessage());

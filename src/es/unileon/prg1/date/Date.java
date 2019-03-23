@@ -226,7 +226,7 @@ public class Date{
 	}
 	
 	//Metodo que devuelva el nombre del mes
-	public String getMonthName() throws DateException{
+	public void printMonthName() throws DateException{
 		String month;
 		switch(this.month){
 			case 1:
@@ -265,15 +265,15 @@ public class Date{
 			case 12:
 				month = "Diciembre";
 			break;
-			default:
-			
+			default:			
 			throw new DateException("La fecha introducida no pertenece a ninguno de los doce meses.");
 		}
-		return month;
+		
+		System.out.println("El mes de la fecha introducida es: "+month);
 	}
 	
 	//Metodo que devuelve el nombre de la estacion
-	public String isSeason()throws DateException{
+	public void printSeason()throws DateException{
 		String season = "";
 		
 		if(this.month > 3 && this.month < 5 || (this.month == 3 && this.day >= 1) || (this.month == 5 && this.day <= 31)){
@@ -289,13 +289,18 @@ public class Date{
 		else{
 			throw new DateException("La fecha introducida no corresponde con ninguna estacion");
 		}
-		return season;
+			System.out.println("La fecha introducida pertenece al "+season);
 	}
 	
 	//Metodo que calcula el numero de meses restante hasta el final del anyo
-	public String getMonthsLeft(){
+	public void printMonthsLeft(){
 		int monthsLeft = 12 - this.month;
-		return "Quedan "+monthsLeft+" meses para que finalice el anyo";
+		if(monthsLeft == 1){
+			System.out.println("Quedan "+monthsLeft+" mes para que finalice el anyo");
+		}
+		else{
+			System.out.println("Quedan "+monthsLeft+" meses para que finalice el anyo");
+		}		
 	}
 		
 	//Metodo para imprimir por pantalla la fecha almacenada en un objeto
