@@ -228,6 +228,11 @@ public class Date{
 	//Metodo que imprime el nombre del mes
 	public void printMonthName(int i){
 		String month;
+		/*En el switch se podria usar el atributo this.month, pero se usa otra variable con el fin de introducir el metodo dentro del 
+		 *bucle del metodo printMonthsLeft con el fin de aprovechar el codigo de este metodo y asi poder imprimir por pantalla el
+		 *nombre de los meses restantes hasta que acabe el anyo. Para poder invocar el metodo  sobre un objeto directamente se le pasara
+		 *como argumento "objeto.getMonth()".
+		*/
 		switch(i){
 			case 1:
 				month = "Enero";
@@ -311,12 +316,50 @@ public class Date{
 		
 	//Metodo que imprime el numero de dias restantes para que acabe el mes
 	public void printDaysLeft(){
-		
+		int daysLeft = this.daysNumber() - this.day;
+		if(daysLeft == 1){
+		System.out.println("Queda "+daysLeft+" dia para que acabe el mes: ");
+		}
+		else{
+		System.out.println("Quedan "+daysLeft+" dias para que acabe el mes: ");
+		}
 	}
 	
 	//Metodo para imprimir por pantalla la fecha almacenada en un objeto
 	public void printDate(){
 		System.out.println("La fecha es: "+this.toString());
+	}
+	
+	public int daysNumber(){
+		int days = 0;
+		switch(this.month){
+			case 2:
+				if(isBisiesto() == true){
+					days = 29;
+				}
+				else{
+					days = 28;
+				}
+			break;
+			case 4:
+			case 6:
+			case 9:
+			case 11:
+				days = 30;
+			break;
+			case 1:
+			case 3:
+			case 5:
+			case 7:
+			case 8:
+			case 10:
+			case 12:
+				days = 31;
+			break;
+			default:
+				days = 0;
+		}
+		return days;
 	}
 	
 	//Metodo para transformar la fecha en una cadena de caracteres
