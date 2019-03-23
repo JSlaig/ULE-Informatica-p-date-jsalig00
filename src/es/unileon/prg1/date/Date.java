@@ -292,8 +292,20 @@ public class Date{
 		return season;
 	}
 	
+	//Metodo que calcula el numero de meses restante hasta el final del anyo
+	public String getMonthsLeft(){
+		int monthsLeft = 12 - this.month;
+		return "Quedan "+monthsLeft+" meses para que finalice el anyo";
+	}
+		
+	//Metodo para imprimir por pantalla la fecha almacenada en un objeto
+	public void printDate(){
+		System.out.println("La fecha es: "+this.toString());
+	}
+	
 	//Metodo para transformar la fecha en una cadena de caracteres
 	public String toString(){
 		return this.day + "/" + this.month + "/" + this.year;
 	}
+
 }

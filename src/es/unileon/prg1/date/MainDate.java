@@ -39,6 +39,11 @@ public class MainDate{
 		
 		System.out.println(hoy.isSeason());
 		
+		String end = hoy.getMonthsLeft();
+		System.out.println(end);
+		
+		hoy.printDate();
+		
 		}catch(DateException e){
 		System.out.println(e.getMessage());
 		}		
