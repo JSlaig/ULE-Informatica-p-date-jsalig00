@@ -28,7 +28,7 @@ public class Date{
 		}
 	}
 	public void setMonth(int month)throws DateException{
-		if(this.isDayRight(this.day, month)){
+		if(month > 0 && month < 13){
 			this.month = month;
 		}
 		else{
@@ -181,7 +181,7 @@ public class Date{
 		return bisiesto;
 	}
 	
-	//Sentencias de control con if, ahora simplificadas con el api de java
+	//Sentencias de control con if
 	public boolean isSameYear(int year){
 		boolean sameYear = false;
 			
@@ -390,37 +390,75 @@ public class Date{
 	}
 	
 	//Metodo para contar el numero de dias del anyo que han pasado
-	public void dayOfYear(){
-		
-		try{
-			
-		Date start = new Date(1,1,this.getYear());
+	public int dayOfYear(){
 		
 		int day = 1;
-		
+
 		for(int i = 1; i <= this.month; i++){
-			for(int j = 1; j <= start.daysNumber(); j++){
-				
-				start.setDay(j);
-				start.setMonth(i);
-				
-				if(this.isSame(start) == true){
-					break;					
+			switch(i){
+			case 2:
+				if(isBisiesto() == true){
+					for(int j = 1; j <= 29; j++){				
+						if(this.getDay() == j && this.getMonth() == i){
+							break;					
+						}
+						else{
+							day++;				
+						}
+					}	
 				}
-				
 				else{
-					day++;				
+					for(int j = 1; j <= 28; j++){				
+						if(this.getDay() == j && this.getMonth() == i){
+							break;					
+						}
+						else{
+							day++;				
+						}
+					}	
 				}
+			break;
+			
+			case 4:
+			case 6:
+			case 9:
+			case 11:
+				for(int j = 1; j <= 30; j++){				
+						if(this.getDay() == j && this.getMonth() == i){
+							break;					
+						}
+						else{
+							day++;				
+						}
+					}	
+			break;
+			
+			case 1:
+			case 3:
+			case 5:
+			case 7:
+			case 8:
+			case 10:
+			case 12:
+				for(int j = 1; j <= 31; j++){				
+						if(this.getDay() == j && this.getMonth() == i){
+							break;					
+						}
+						else{
+							day++;				
+						}
+					}	
+			break;
+			
+			default:
+				
 			}
+			
 		}
-		
-		System.out.println("Es el dia "+day+" del anyo");
-		
-		}catch(DateException e){
-		System.out.println(e.getMessage());
-		}		
+
+		System.out.println("Es el dia "+day+" del anyo");		
+	return day;
 	}
-	
 	
 	//Metodo para contar el numero de intentos para generar una fecha aleatoria que coincida con la introducida
 	public void attempt(){
@@ -434,7 +472,7 @@ public class Date{
 		int day, month, year;
 		
 		int i = 1;
-		
+		//para hacerlo con do-while no cambiaria nada, se pondria: do{fragmento de codigo a ejecutar}while(true);
 		while(true){
 			rday = Math.random() * 100;
 			rmonth = Math.random() * 100;
@@ -464,7 +502,42 @@ public class Date{
 		
 		}catch(DateException e){
 				System.out.println(e.getMessage());
-			}			
+		}			
+	}
+	
+	//Metodo que calcula que dia de la semana sera la fecha introducida
+	public void dayOfWeek(){
+		//Supongo que el primer dia del anyo es un lunes
+		String dia = "";
+		
+		int r = this.dayOfYear() % 7;
+		
+		switch(r){
+			case 1:
+				dia = "Lunes";
+			break;
+			case 2:
+				dia = "Martes";
+			break;
+			case 3:
+				dia = "Miercoles";
+			break;
+			case 4:
+				dia = "Jueves";
+			break;
+			case 5:
+				dia = "Viernes";
+			break;
+			case 6:
+				dia = "Sabado";
+			break;
+			case 0:
+				dia = "Domingo";
+			break;
+			default:
+				dia = "";
+		}
+		System.out.println("La fecha introducida, correspondiente con el dia "+this.dayOfYear()+" es un "+dia);
 	}
 	
 	//Metodo para transformar la fecha en una cadena de caracteres

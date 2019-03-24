@@ -12,21 +12,23 @@ public class MainDate{
 		hoy = new Date(30, 12, 2019);
 		ayer = new Date(30, 12, 2019);
 
-		//hoy.printDate();
+		hoy.printDate();
 		
-		//hoy.printSeason();		
+		hoy.printSeason();		
 		
-		//hoy.printMonthsLeft();
+		hoy.printMonthsLeft();
 
-		//hoy.printDaysLeft();
+		hoy.printDaysLeft();
 		
-		//hoy.printSameDayNumber();
+		hoy.printSameDayNumber();		
 		
-		//hoy.dayOfYear();
+		hoy.attempt();	
+
+		hoy.printDayOfYear();
 		
-		hoy.attempt();
+		hoy.dayOfWeek();		
 		
-		//ayer.printDate();
+		ayer.printDate();
 		
 		}catch(DateException e){
 		System.out.println(e.getMessage());
