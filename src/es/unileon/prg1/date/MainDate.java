@@ -11,41 +11,22 @@ public class MainDate{
 			
 		hoy = new Date(30, 12, 2019);
 		ayer = new Date(30, 12, 2019);
-		
-		/*		
-		boolean sameYear = ayer.isSameYear(hoy.getYear());		
-		if(sameYear == true){
-		System.out.println("Las dos fechas pertenecen al mismo anyo");
-		}
-		
-		boolean sameMonth = ayer.isSameMonth(hoy.getMonth());		
-		if(sameMonth == true){
-		System.out.println("Las dos fechas pertenecen al mismo mes");
-		}
-		
-		boolean sameDay = ayer.isSameDay(hoy.getDay());		
-		if(sameDay == true){
-		System.out.println("Las dos fechas tienen el mismo dia");
-		}
-		
-		boolean same = ayer.isSame(hoy);
-		if(same == true){
-		System.out.println("Las dos fechas son la misma");
-		}	
-		*/
-		hoy.printDate();
-		
-		hoy.printSeason();		
-		
-		hoy.printMonthsLeft();
 
-		hoy.printDaysLeft();
+		//hoy.printDate();
 		
-		hoy.printSameDayNumber();
+		//hoy.printSeason();		
 		
-		hoy.dayOfYear();
+		//hoy.printMonthsLeft();
+
+		//hoy.printDaysLeft();
 		
-		ayer.printDate();
+		//hoy.printSameDayNumber();
+		
+		//hoy.dayOfYear();
+		
+		hoy.attempt();
+		
+		//ayer.printDate();
 		
 		}catch(DateException e){
 		System.out.println(e.getMessage());

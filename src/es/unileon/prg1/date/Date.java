@@ -421,6 +421,52 @@ public class Date{
 		}		
 	}
 	
+	
+	//Metodo para contar el numero de intentos para generar una fecha aleatoria que coincida con la introducida
+	public void attempt(){
+		
+		try{
+			
+		Date random = null;	
+		
+		double rday, rmonth, ryear;
+		
+		int day, month, year;
+		
+		int i = 1;
+		
+		while(true){
+			rday = Math.random() * 100;
+			rmonth = Math.random() * 100;
+			//Con motivo de reducir el numero de intentos, escogi como multiplo el 3000 ya que asi las fechas seran mas cercanas
+			ryear = Math.random() * 3000;
+			
+			day = (int)rday;
+			month = (int)rmonth;
+			year = (int)ryear;
+			
+			if(isDayRight(day, month) == true){
+				random = new Date(day, month, year);
+			}
+			else{
+				continue;
+			}						
+		
+			if(this.isSame(random) == true){
+				break;
+			}
+			else{
+				i++;
+			}
+		}
+		
+		System.out.println("La fecha coincidio en el intento: "+i);
+		
+		}catch(DateException e){
+				System.out.println(e.getMessage());
+			}			
+	}
+	
 	//Metodo para transformar la fecha en una cadena de caracteres
 	public String toString(){
 		return this.day + "/" + this.month + "/" + this.year;
